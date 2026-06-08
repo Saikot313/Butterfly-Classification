@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ButterflyAI — Species Identifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div class="bg-mesh"></div>
+    <div class="floaters" id="floaters"></div>
+
+    <div class="wrap">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo-badge">
+                <span class="logo-dot"></span>
+                AI-Powered Identification
+            </div>
+            <h1>ButterflyAI</h1>
+            <p class="subtitle">Upload any butterfly photo and our deep learning model will identify the species in
+                seconds</p>
+
+            <div class="status-bar">
+                <div class="status-chip">
+                    <span class="chip-dot {{ 'green' if model_ready else 'red' }}"></span>
+                    Model {{ 'Ready' if model_ready else 'Not Loaded' }}
+                </div>
+                <div class="status-chip">
+                    <span class="chip-dot green"></span>
+                    {{ num_classes }} Species
+                </div>
+                <div class="status-chip">
+                    <span class="chip-dot green"></span>
+                    MobileNetV2
+                </div>
+            </div>
+        </header>
+
+        <!-- UPLOAD CARD -->
+        <div class="card">
+
+            {% if not model_ready %}
+            <div class="model-warning">
+                <span>⚠️</span>
+                <div>
+                    <strong>Model not loaded.</strong> Please run <code>train_model.ipynb</code> first to train and save
+                    the model, then restart <code>app.py</code>.
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- DROP ZONE -->
+            <div class="drop-zone" id="dropZone">
+                <input type="file" id="fileInput" accept="image/*" />
+                <span class="drop-icon">🦋</span>
+                <div class="drop-title">Drop your butterfly photo here</div>
+                <div class="drop-sub">or <span>click to browse</span> · PNG, JPG, WEBP supported</div>
+            </div>
+
+            <!-- PREVIEW -->
+            <div class="preview-section" id="previewSection">
+                <div class="preview-grid">
+                    <div class="preview-img-wrap">
+                        <img id="previewImg" src="" alt="preview" />
+                    </div>
+                    <div class="img-meta" id="imgMeta"></div>
+                </div>
+            </div>
+
+            <!-- ANALYZE BTN -->
+            <button class="btn-analyze" id="analyzeBtn" disabled>
+                <span class="spinner" id="spinner"></span>
+                <span id="btnText">🔍 Identify Butterfly</span>
+            </button>
+
+            <!-- ERROR -->
+            <div class="error-box" id="errorBox">
+                <span>❌</span>
+                <span id="errorMsg"></span>
+            </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="result-card" id="resultCard">
+            <div class="result-hero">
+                <div
+                    style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">
+                    Identified Species</div>
+                <div class="result-species" id="topSpecies">—</div>
+                <div class="result-conf" id="topConf">
+                    <span>🎯</span> <span id="confText">—</span>
+                </div>
+            </div>
+            <div class="result-body">
+                <div class="top-predictions">
+                    <h3>Top Predictions</h3>
+                    <div id="predBars"></div>
+                </div>
+                <div class="fun-fact" id="funFactBox">
+                    <span class="fun-fact-icon">💡</span>
+                    <span class="fun-fact-text" id="funFactText"></span>
+                </div>
+                <button class="btn-reset" id="resetBtn">↩ Analyze Another Photo</button>
+            </div>
+        </div>
+
+        <footer>Built with Flask · TensorFlow · MobileNetV2 — Butterfly Classifier Project</footer>
+    </div>
+
+  <script src="script.js"></script>
+  
+</body>
+
+</html>
