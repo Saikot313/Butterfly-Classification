@@ -1,5 +1,4 @@
 
-        // ── Floating butterflies ──────────────────────────────
     const emojis = ['🦋', '🌸', '🍃', '🌿', '🌺', '✨'];
     const floaters = document.getElementById('floaters');
     for (let i = 0; i < 18; i++) {
@@ -15,7 +14,6 @@
     floaters.appendChild(el);
         }
 
-    // ── Elements ──────────────────────────────────────────
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const prevSect = document.getElementById('previewSection');
@@ -31,7 +29,6 @@
 
     let selectedFile = null;
 
-        // ── Drag & Drop ───────────────────────────────────────
         dropZone.addEventListener('dragover', e => {e.preventDefault(); dropZone.classList.add('drag-over'); });
         dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
         dropZone.addEventListener('drop', e => {
@@ -67,7 +64,6 @@
     hideError();
         }
 
-        // ── Analyze ───────────────────────────────────────────
         analyzeBtn.addEventListener('click', async () => {
             if (!selectedFile) return;
     setLoading(true);
@@ -99,7 +95,6 @@
     document.getElementById('topSpecies').textContent = top.species;
     document.getElementById('confText').textContent = `${top.confidence.toFixed(1)}% confidence`;
 
-    // Build prediction bars
     const bars = document.getElementById('predBars');
     bars.innerHTML = '';
             data.predictions.forEach((p, i) => {
@@ -120,7 +115,6 @@
     document.getElementById('funFactText').textContent = data.fun_fact;
     resultCard.classList.add('show');
 
-            // Animate bars
             setTimeout(() => {
         document.querySelectorAll('.pred-bar-fill').forEach(el => {
             el.style.width = el.dataset.w + '%';
@@ -131,7 +125,6 @@
     resultCard.scrollIntoView({behavior: 'smooth', block: 'start' });
         }
 
-        // ── Reset ─────────────────────────────────────────────
         resetBtn.addEventListener('click', () => {
         selectedFile = null;
     fileInput.value = '';
@@ -143,7 +136,6 @@
     window.scrollTo({top: 0, behavior: 'smooth' });
         });
 
-    // ── Helpers ───────────────────────────────────────────
     function setLoading(on) {
         analyzeBtn.disabled = on;
     spinner.style.display = on ? 'block' : 'none';

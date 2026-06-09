@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ButterflyAI — Species Identifier</title>
+    <title>ButterflyAI - Species Identifier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
@@ -21,7 +21,6 @@
 
     <div class="wrap">
 
-        <!-- HEADER -->
         <header>
             <div class="logo-badge">
                 <span class="logo-dot"></span>
@@ -31,34 +30,13 @@
             <p class="subtitle">Upload any butterfly photo and our deep learning model will identify the species in
                 seconds</p>
 
-            <div class="status-bar">
-                <div class="status-chip">
-                    <span class="chip-dot {{ 'green' if model_ready else 'red' }}"></span>
-                    Model {{ 'Ready' if model_ready else 'Not Loaded' }}
-                </div>
-                <div class="status-chip">
-                    <span class="chip-dot green"></span>
-                    {{ num_classes }} Species
-                </div>
-                <div class="status-chip">
-                    <span class="chip-dot green"></span>
-                    MobileNetV2
-                </div>
-            </div>
+            
         </header>
 
-        <!-- UPLOAD CARD -->
         <div class="card">
 
-            {% if not model_ready %}
-            <div class="model-warning">
-                <span>⚠️</span>
-                <div>
-                    <strong>Model not loaded.</strong> Please run <code>train_model.ipynb</code> first to train and save
-                    the model, then restart <code>app.py</code>.
-                </div>
-            </div>
-            {% endif %}
+            
+            
 
             <!-- DROP ZONE -->
             <div class="drop-zone" id="dropZone">
@@ -68,7 +46,6 @@
                 <div class="drop-sub">or <span>click to browse</span> · PNG, JPG, WEBP supported</div>
             </div>
 
-            <!-- PREVIEW -->
             <div class="preview-section" id="previewSection">
                 <div class="preview-grid">
                     <div class="preview-img-wrap">
@@ -78,20 +55,17 @@
                 </div>
             </div>
 
-            <!-- ANALYZE BTN -->
             <button class="btn-analyze" id="analyzeBtn" disabled>
                 <span class="spinner" id="spinner"></span>
                 <span id="btnText">🔍 Identify Butterfly</span>
             </button>
 
-            <!-- ERROR -->
             <div class="error-box" id="errorBox">
                 <span>❌</span>
                 <span id="errorMsg"></span>
             </div>
         </div>
 
-        <!-- RESULTS -->
         <div class="result-card" id="resultCard">
             <div class="result-hero">
                 <div
@@ -115,10 +89,12 @@
             </div>
         </div>
 
-        <footer>Built with Flask · TensorFlow · MobileNetV2 — Butterfly Classifier Project</footer>
+        <footer>Built with Flask · TensorFlow · MobileNetV2 - Butterfly Classifier Project</footer>
+
+        <footer>Made by Md.Sakender Saikot</footer>
     </div>
 
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
   
 </body>
 

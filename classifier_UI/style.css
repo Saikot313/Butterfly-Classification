@@ -33,7 +33,6 @@
         overflow-x: hidden;
     }
 
-    /* ── ANIMATED BG ────────────────────────────── */
     .bg-mesh {
         position: fixed;
         inset: 0;
@@ -58,7 +57,6 @@
         }
     }
 
-    /* ── FLOATING BUTTERFLIES ───────────────────── */
     .floaters {
         position: fixed;
         inset: 0;
@@ -94,7 +92,6 @@
         }
     }
 
-    /* ── LAYOUT ─────────────────────────────────── */
     .wrap {
         position: relative;
         z-index: 1;
@@ -103,7 +100,6 @@
         padding: 0 20px 80px;
     }
 
-    /* ── HEADER ─────────────────────────────────── */
     header {
         text-align: center;
         padding: 64px 0 48px;
@@ -167,7 +163,6 @@
         margin: 0 auto;
     }
 
-    /* ── STATUS BADGE ────────────────────────────── */
     .status-bar {
         display: flex;
         justify-content: center;
@@ -208,7 +203,6 @@
         background: var(--danger);
     }
 
-    /* ── UPLOAD CARD ─────────────────────────────── */
     .card {
         background: var(--surface);
         border: 1px solid var(--border);
@@ -279,7 +273,6 @@
         font-weight: 500;
     }
 
-    /* ── IMAGE PREVIEW ───────────────────────────── */
     .preview-section {
         display: none;
         margin-top: 24px;
@@ -327,7 +320,6 @@
         color: var(--text);
     }
 
-    /* ── ANALYZE BUTTON ──────────────────────────── */
     .btn-analyze {
         width: 100%;
         margin-top: 20px;
@@ -379,7 +371,6 @@
         }
     }
 
-    /* ── RESULTS ─────────────────────────────────── */
     .result-card {
         background: var(--surface2);
         border: 1px solid var(--border);
@@ -440,7 +431,6 @@
         padding: 28px 32px;
     }
 
-    /* confidence bars */
     .top-predictions {
         margin-bottom: 28px;
     }
@@ -494,7 +484,6 @@
         background: linear-gradient(90deg, rgba(126, 232, 162, .4), rgba(126, 232, 162, .6));
     }
 
-    /* fun fact */
     .fun-fact {
         background: rgba(240, 192, 96, .05);
         border: 1px solid rgba(240, 192, 96, .15);
@@ -517,7 +506,6 @@
         line-height: 1.6;
     }
 
-    /* ── RESET BUTTON ────────────────────────────── */
     .btn-reset {
         margin-top: 20px;
         width: 100%;
@@ -537,7 +525,6 @@
         color: var(--accent);
     }
 
-    /* ── ERROR ───────────────────────────────────── */
     .error-box {
         background: rgba(255, 107, 107, .08);
         border: 1px solid rgba(255, 107, 107, .25);
@@ -555,7 +542,6 @@
         align-items: flex-start;
     }
 
-    /* ── FOOTER ──────────────────────────────────── */
     footer {
         text-align: center;
         padding: 40px 0 20px;
@@ -563,7 +549,6 @@
         color: var(--muted);
     }
 
-    /* ── MODEL WARNING ───────────────────────────── */
     .model-warning {
         background: rgba(240, 192, 96, .07);
         border: 1px solid rgba(240, 192, 96, .2);
