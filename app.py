@@ -27,8 +27,16 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'}
 
 # Model config
 IMG_SIZE = (128, 128)
-MODEL_PATH = os.path.join('models', 'butterfly_cnn.h5')
-CLASS_NAMES_PATH = os.path.join('models', 'class_names.json')
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+MODEL_PATH = os.path.join(
+    BASE_DIR, 'models', 'butterfly_cnn.h5'
+)
+
+CLASS_NAMES_PATH = os.path.join(
+    BASE_DIR, 'models', 'class_names.json'
+)
 
 # Global model variables 
 model = None
@@ -217,20 +225,22 @@ def get_species():
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+# Load model when the application starts
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
+model_loaded = load_ml_model()
+
+if not model_loaded:
+    print("\nWARNING: Model not loaded!")
+else:
+    print("\nCNN model is ready for inference.")
+
+
+# Local development server
 if __name__ == '__main__':
     print("\n" + "="*55)
     print(" Butterfly Classification - Flask API")
     print("="*55)
-
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-
-    model_loaded = load_ml_model()
-
-    if not model_loaded:
-        print("\nWARNING: Model not loaded!")
-        print("   The server will start but /api/predict will return errors.")
-        print("   Train the model first: open butterfly_cnn_training.ipynb\n")
-
     print("\nStarting server...")
     print("   URL: http://127.0.0.1:5000")
     print("   Press CTRL+C to stop\n")
